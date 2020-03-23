@@ -5,7 +5,6 @@ import '../src/services/httpservices.dart';
 import '../src/model/datastats.dart';
 import '../src/widgets/detail_view_card.dart';
 import '../src/util/constants.dart';
-import '../src/screens/hospital_view_screen.dart';
 
 
 class App extends StatefulWidget {
@@ -71,42 +70,24 @@ class _AppState extends State<App> {
                         SizedBox(
                         height: 40.0,
                         ),
-//                          Padding(
-//                            padding: EdgeInsets.only(right: 20.0),
-//                            child: Row(
-//                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                              children: <Widget>[
-//                                IconButton(icon: Icon(Icons.refresh,
-//                                size: 30.0,), onPressed: (){}),
-//                                Align(
-//                                  alignment: Alignment.centerRight,
-//                                  child: Text('Last Updated: ${snapshot.data.lastUpdated}',
-//                                    style: StyleConstants.SUBTITLE_LABEL2,
-//                                  ),
-//
-//                                ),
-//
-//                              ],
-//
-//                            ),
-//                              ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (_) {
-                              return HospitalViewScreen();
-                            }));
-                          },
-                          child: Hero(
-                            tag: 'listHero',
-                            child: DetailViewCard(type: 'Local',
-                              TotalCases: snapshot.data.local_total_cases,
-                              NewCases: snapshot.data.local_new_cases,
-                              Deaths: snapshot.data.local_deaths,
-                              Recovered: snapshot.data.local_recovered,
-                              TotalInHospitals: snapshot.data.local_total_in_hospitals,
-                              NewDeaths: snapshot.data.local_new_deaths,
-                            ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 25.0),
+                          child: Row(
+                            children: <Widget>[
+                              Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text('Last Updated: ${snapshot.data.lastUpdated}',
+                                    style: StyleConstants.SUBTITLE_LABEL2,)),
+                            ],
                           ),
+                        ),
+                        DetailViewCard(type: 'Local',
+                          TotalCases: snapshot.data.local_total_cases,
+                          NewCases: snapshot.data.local_new_cases,
+                          Deaths: snapshot.data.local_deaths,
+                          Recovered: snapshot.data.local_recovered,
+                          TotalInHospitals: snapshot.data.local_total_in_hospitals,
+                          NewDeaths: snapshot.data.local_new_deaths,
                         ),
 
                         DetailViewCardGlobal(type: 'Global',
