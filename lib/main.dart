@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'src/app.dart';
 import 'package:path_provider/path_provider.dart';
 import 'src/services/Logger.dart';
+import 'package:f_logs/f_logs.dart';
 
 void main() async{
 
@@ -10,6 +11,7 @@ void main() async{
   String canonicalFileName = '$docsDir/$_logFileName';
   await Logger.initializeLogging(canonicalFileName);
   await Logger.log('Application Started!!!');
+
   runApp(App());
 }
 

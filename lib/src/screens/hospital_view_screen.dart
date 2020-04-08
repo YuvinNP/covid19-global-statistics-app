@@ -6,7 +6,7 @@ import '../services/httpservices.dart';
 import '../services/Logger.dart';
 import '../widgets/detail_view_card.dart';
 import '../widgets/detail_view_card_global.dart';
-
+import 'package:f_logs/f_logs.dart';
 
 class HospitalViewScreen extends StatefulWidget {
 
@@ -41,9 +41,12 @@ class _HospitalViewScreenState extends State<HospitalViewScreen> {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
               Logger.log('Data not found');
+              FLog.logThis(text: 'Data Not Found Error',
+              exception: Exception('Data missing'), type: LogLevel.ERROR);
               return Text('Could not found data!');
             case ConnectionState.waiting:
               Logger.log('Connection is Waiting');
+              FLog.logThis(text:'Connection waiting', type: LogLevel.WARNING);
               return Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -119,6 +122,7 @@ class _HospitalViewScreenState extends State<HospitalViewScreen> {
                       child: Text('Share'),
                       onPressed: (){
                         shareFile();
+                        FLog.logThis(text: 'Hello World!', type: LogLevel.INFO);
                       })
                 ],
               );
