@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../util/constants.dart';
+import '../services/Logger.dart';
 
 class DetailViewCardGlobal extends StatelessWidget {
 
@@ -24,6 +25,9 @@ class DetailViewCardGlobal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    Logger.log('Global New cases: $NewCases,Global Total Cases: $TotalCases, Global Deaths: $Deaths, Global New Deaths: $NewDeaths, Global Recoveries: $Recovered, Global in hospitals: $TotalInHospitals');
+
     return Padding(
       padding: EdgeInsets.all(15.0),
       child: Card(

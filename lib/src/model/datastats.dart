@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import '../model/hospitaldata.dart';
 import '../model/hospital.dart';
+import '../services/Logger.dart';
 
 class DataStat {
 
@@ -50,6 +51,7 @@ class DataStat {
             name: data['hospital']['name'] as String,
             sinhalaName: data['hospital']['name_si'] as String
           )))
+
     );
 
     return DataStat(
@@ -68,6 +70,5 @@ class DataStat {
       global_total_cases: json['global_total_cases'] as int,
 
     );
-
   }
 }

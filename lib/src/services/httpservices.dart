@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart';
 import '../model/datastats.dart';
+import '../services/Logger.dart';
 
 class HttpServices {
   final String url =
@@ -10,6 +11,8 @@ class HttpServices {
     Response response = await get(url);
 
     if(response.statusCode == 200) {
+
+      await Logger.log('Reqest Successfull, Data Retrived from $url');
       return DataStat.fromJson(jsonDecode(response.body)['data']);
     }
   }

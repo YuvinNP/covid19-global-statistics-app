@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../util/constants.dart';
+import '../services/Logger.dart';
+import 'package:f_logs/f_logs.dart';
 
 class DetailViewCard extends StatelessWidget {
 
@@ -22,8 +24,11 @@ class DetailViewCard extends StatelessWidget {
     this.TotalInHospitals
   });
 
+
   @override
   Widget build(BuildContext context) {
+    FLog.exportLogs();
+    Logger.log('Local New cases: $NewCases,Local Total Cases: $TotalCases, Local Deaths: $Deaths, Local New Deaths: $NewDeaths, Local Recoveries: $Recovered, Locals in hospitals: $TotalInHospitals');
     return Padding(
       padding: EdgeInsets.all(15.0),
       child: Card(
@@ -58,7 +63,7 @@ class DetailViewCard extends StatelessWidget {
                      ],
                    ),
                    Text(
-                    NewCases != 0 ? '+' '$NewCases new cases': null,
+                    NewCases != 0 ? '+' '$NewCases new cases': '',
                      style: StyleConstants.SUBTITLE_LABEL,
                    ),
                    SizedBox(
